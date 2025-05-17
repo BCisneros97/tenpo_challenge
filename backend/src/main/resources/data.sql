@@ -1,0 +1,10 @@
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (1, 'Pedro Lopez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (2, 'Maria Garcia', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (3, 'Juan Martinez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (4, 'Ana Rodriguez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (5, 'Luis Hernandez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (6, 'Laura Gonzalez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (7, 'Carlos Perez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (8, 'Sofia Sanchez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (9, 'Javier Ramirez', now(), now()) ON CONFLICT (id) DO NOTHING ;
+INSERT INTO clients (id, name, created_at, updated_at) VALUES (10, 'Isabel Torres', now(), now()) ON CONFLICT (id) DO NOTHING ;

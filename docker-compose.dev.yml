@@ -1,0 +1,43 @@
+networks:
+  tenpo_network:
+    name: tenpo_network
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: tenpo
+      POSTGRES_USER: backend
+      POSTGRES_PASSWORD: 123123
+    ports:
+      - 5432:5432
+    networks:
+      - tenpo_network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    image: tenpo-backend:dev
+    build:
+      context: ./backend
+      target: dev
+    networks:
+      - tenpo_network
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+    develop:
+      watch:
+        - path: ./backend/src
+          action: restart
+          target: /app/src

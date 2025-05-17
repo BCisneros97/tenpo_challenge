@@ -1,0 +1,34 @@
+package com.example.tenpo.dto;
+
+import java.time.LocalDateTime;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateTransactionRequest {
+  @NotNull(message = "amount is required")
+  @Min(value = 1, message = "amount must be greater than 0")
+  private Integer amount;
+
+  @NotNull(message = "business sector is required")
+  @Size(min = 2, max = 255, message = "business sector must be at least 2 characters long and at most 255 characters long")
+  private String businessSector;
+
+  @NotNull(message = "client name is required")
+  @Size(min = 2, max = 255, message = "client name must be at least 2 characters long and at most 255 characters long")
+  private String clientName;
+
+  @NotNull(message = "transaction date is required")
+  @PastOrPresent(message = "transaction date must be in the past or present")
+  private LocalDateTime transactionDate;
+}
