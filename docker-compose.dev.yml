@@ -41,3 +41,16 @@ services:
         - path: ./backend/src
           action: restart
           target: /app/src
+
+  frontend:
+    image: tenpo-frontend:dev
+    build:
+      context: ./frontend
+    networks:
+      - tenpo_network
+    ports:
+      - 8081:3000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
