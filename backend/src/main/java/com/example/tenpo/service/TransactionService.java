@@ -21,7 +21,7 @@ public class TransactionService {
   private final ClientService clientService;
 
   public List<Transaction> findAll() {
-    return (List<Transaction>) this.transactionRepository.findAll();
+    return this.transactionRepository.findAllByOrderByIdDesc();
   }
 
   public Transaction create(CreateTransactionRequest createTransactionDto) {
