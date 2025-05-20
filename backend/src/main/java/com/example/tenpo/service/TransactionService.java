@@ -82,7 +82,7 @@ public class TransactionService {
   }
 
   private void validateClientTransactionLimit(Client client) {
-    if (client.getTransactions().size() >= 2) {
+    if (client.getTransactions().size() >= 100) {
       throw new ForbiddenException("Client has reached the maximum number of transactions");
     }
   }
