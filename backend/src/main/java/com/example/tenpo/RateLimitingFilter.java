@@ -25,6 +25,11 @@ public class RateLimitingFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
     HttpServletRequest httpRequest = (HttpServletRequest) request;
+    String requestURI = httpRequest.getRequestURI();
+    if (requestURI != null && requestURI.startsWith("/swagger-ui")) {
+      chain.doFilter(request, response);
+      return;
+    }
     String clientIp = httpRequest.getRemoteAddr();
     synchronized (requestLog) {
       requestLog.computeIfAbsent(clientIp, k -> new LinkedList<>());
