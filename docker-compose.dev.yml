@@ -52,5 +52,7 @@ services:
       - 8081:3000
     depends_on:
       - backend
+    environment:
+      BACKEND_URL: http://localhost:8080
     volumes:
       - ./frontend:/app
